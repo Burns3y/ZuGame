@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b38861dn8dthc"]
+
+[ext_resource type="PackedScene" uid="uid://dnu0d8u1cn1ls" path="res://Scenes/Characters/oscar.tscn" id="1_u4tfm"]
+[ext_resource type="PackedScene" uid="uid://do11y544nav4a" path="res://Scenes/Characters/zu.tscn" id="2_871xk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wknni"]
+size = Vector2(1916, 20)
+
+[node name="Level 1" type="Node2D"]
+
+[node name="TempCollisionTest" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TempCollisionTest"]
+position = Vector2(938, 1016)
+shape = SubResource("RectangleShape2D_wknni")
+
+[node name="Oscar" parent="." instance=ExtResource("1_u4tfm")]
+
+[node name="Zu" parent="." instance=ExtResource("2_871xk")]
+position = Vector2(228, 0)
