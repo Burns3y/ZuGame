@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -1000.0
+var new_jump_velocity = JUMP_VELOCITY
 
 var JUMP
 var LEFT
@@ -26,14 +27,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
 	#If the player is in water
-	if $"..".player_is_in_water == true:
-		swimming_physics()
-	
-	#If the player is not in water, normal jump + gravity
-	else:
-		if Input.is_action_just_pressed(JUMP) and is_on_floor():
-			velocity.y = JUMP_VELOCITY
-		gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+	if Input.is_action_just_pressed(JUMP) and is_on_floor():
+		velocity.y = new_jump_velocity
+	elif Input.is_action_pressed(JUMP) and JUMP_VELOCITY / 5 == new_jump_velocity:
+		velocity.y = new_jump_velocity
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -51,8 +49,12 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func swimming_physics():
-	gravity = ProjectSettings.get_setting("physics/2d/default_gravity") / 5
-	if Input.is_action_pressed(JUMP):
-			velocity.y = JUMP_VELOCITY / 5
+func swimming_physics(body, is_in_water):
+
+	if is_in_water and str(self.name) == str(body):
+		gravity = ProjectSettings.get_setting("physics/2d/default_gravity") / 5
+		new_jump_velocity = JUMP_VELOCITY / 5
+	elif not is_in_water and str(self.name) == str(body):
+		gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+		new_jump_velocity = JUMP_VELOCITY
 	

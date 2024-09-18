@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b38861dn8dthc"]
+[gd_scene load_steps=17 format=3 uid="uid://b38861dn8dthc"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/game_1_level_1.gd" id="1_p021r"]
 [ext_resource type="PackedScene" uid="uid://dnu0d8u1cn1ls" path="res://Scenes/Characters/oscar.tscn" id="1_u4tfm"]
@@ -477,7 +477,10 @@ pattern_2 = SubResource("TileMapPattern_qu2dk")
 pattern_3 = SubResource("TileMapPattern_ywqsh")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gw7n7"]
-size = Vector2(83, 121.5)
+size = Vector2(83, 126.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1ru1"]
+size = Vector2(45.5, 8.5)
 
 [node name="Level 1" type="Node2D"]
 script = ExtResource("1_p021r")
@@ -495,12 +498,12 @@ layer_1/tile_data = PackedInt32Array(851968, 131073, 2, 917504, 196609, 1, 98304
 [node name="Water" type="Area2D" parent="TileMap"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Water"]
-position = Vector2(385, 457.25)
+position = Vector2(385, 452.125)
 shape = SubResource("RectangleShape2D_gw7n7")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TileMap/Water"]
-position = Vector2(656, 480)
-shape = SubResource("RectangleShape2D_gw7n7")
+position = Vector2(655.75, 420.25)
+shape = SubResource("RectangleShape2D_f1ru1")
 
 [node name="Oscar" parent="." instance=ExtResource("1_u4tfm")]
 position = Vector2(226, 361)

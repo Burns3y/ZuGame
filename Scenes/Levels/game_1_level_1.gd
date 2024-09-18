@@ -14,14 +14,14 @@ func _process(delta):
 
 func _on_water_body_entered(body):
 	if body.name == "Oscar":
-		oscar_is_in_water = true
+		$Oscar.swimming_physics(body.name, true)
 	elif body.name == "Zu":
-		zu_is_in_water = true
+		$Zu.swimming_physics(body.name, true)
 
 
 
 func _on_water_body_exited(body):
 	if body.name == "Oscar":
-		oscar_is_in_water = false
+		$Oscar.swimming_physics(body.name, false)
 	elif body.name == "Zu":
-		zu_is_in_water = false
+		$Zu.swimming_physics(body.name, false)
