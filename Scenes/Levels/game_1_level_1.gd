@@ -15,8 +15,10 @@ func _process(delta):
 func _on_water_body_entered(body):
 	if body.name == "Oscar":
 		$Oscar.swimming_physics(body.name, true)
+		$Oscar.velocity.y = 0
 	elif body.name == "Zu":
 		$Zu.swimming_physics(body.name, true)
+		$Zu.velocity.y /= 4
 
 
 

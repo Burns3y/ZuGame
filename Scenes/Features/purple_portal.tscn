@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://b31qayywwmicg"]
+
+[ext_resource type="Texture2D" uid="uid://dxt6mn3t3kn3q" path="res://Assets/Features/Purple portal.png" id="1_1in4d"]
+[ext_resource type="Texture2D" uid="uid://cti3uimyqgmaw" path="res://Assets/Features/circle.png" id="2_0y824"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_l5csh"]
+polygon = PackedVector2Array(126, 85, 118, 91, 112, 99, 108, 108, 105, 120, 104, 124, 104, 137, 105, 144, 108, 152, 113, 162, 121, 170, 130, 174, 139, 171, 146, 163, 150, 155, 154, 139, 155, 121, 151, 109, 148, 101, 142, 93, 136, 86)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v1gah"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 35.0
+orbit_velocity_min = 0.2
+orbit_velocity_max = 0.5
+gravity = Vector3(0, 0, 0)
+
+[node name="PurplePortal" type="Area2D"]
+
+[node name="PurplePortal" type="Sprite2D" parent="."]
+position = Vector2(140, 139)
+texture = ExtResource("1_1in4d")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(128, 129)
+texture = ExtResource("2_0y824")
+texture_scale = 0.5
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_l5csh")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(131, 129)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_v1gah")
+lifetime = 20.0

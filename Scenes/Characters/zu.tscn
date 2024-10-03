@@ -1,17 +1,64 @@
-[gd_scene load_steps=4 format=3 uid="uid://do11y544nav4a"]
+[gd_scene load_steps=7 format=3 uid="uid://do11y544nav4a"]
 
-[ext_resource type="Texture2D" uid="uid://b2fubc4gwvegx" path="res://icon.svg" id="1_7yy2m"]
 [ext_resource type="Script" path="res://Scenes/Characters/general_movement.gd" id="1_kf38t"]
+[ext_resource type="Texture2D" uid="uid://chsoppolkq007" path="res://Assets/Characters/Zu Running fixed_-1.png (2).png" id="2_kun5x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qg53k"]
-size = Vector2(128, 126)
+size = Vector2(45, 95)
+
+[sub_resource type="Animation" id="Animation_iikfr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_06q75"]
+resource_name = "running"
+length = 1.2
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 3), Vector2i(0, 4), Vector2i(0, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8lguh"]
+_data = {
+"RESET": SubResource("Animation_iikfr"),
+"running": SubResource("Animation_06q75")
+}
 
 [node name="Zu" type="CharacterBody2D"]
 collision_mask = 3
 script = ExtResource("1_kf38t")
 
-[node name="ZuImage" type="Sprite2D" parent="."]
-texture = ExtResource("1_7yy2m")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qg53k")
+
+[node name="Image" type="Sprite2D" parent="."]
+position = Vector2(-9, 1)
+texture = ExtResource("2_kun5x")
+vframes = 5
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8lguh")
+}
