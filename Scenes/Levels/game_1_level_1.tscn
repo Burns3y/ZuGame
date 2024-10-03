@@ -369,7 +369,7 @@ texture_region_size = Vector2i(32, 32)
 5:3/0 = 0
 5:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:3/0/physics_layer_0/angular_velocity = 0.0
-5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(3.96875, -16, 3.90625, 16, -16, 16, -16, -16)
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -1.68661, -16, 4.11732, -10.1197, 4.0625, 16, -16, 16)
 5:3/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 5:3/0/physics_layer_1/angular_velocity = 0.0
 6:3/0 = 0
@@ -380,7 +380,7 @@ texture_region_size = Vector2i(32, 32)
 7:3/0 = 0
 7:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:3/0/physics_layer_0/angular_velocity = 0.0
-7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3.96875, 16, -3.90625, -16, 16, -16, 16, 16)
+7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, 1.68661, -16, -4.11732, -10.1197, -4.0625, 16, 16, 16)
 7:3/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 7:3/0/physics_layer_1/angular_velocity = 0.0
 4:4/0 = 0
@@ -495,7 +495,7 @@ layer_2/tile_data = PackedInt32Array(851968, 196609, 1, 917504, 196609, 1, 98304
 [node name="Water" type="Area2D" parent="TileMap"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMap/Water"]
-polygon = PackedVector2Array(340.5, 389.5, 344, 549, 680, 546.5, 683.5, 421, 629.5, 421.5, 631.5, 512.5, 447.5, 512.5, 446.5, 481.5, 423.5, 482, 426, 390)
+polygon = PackedVector2Array(340.5, 389.5, 344, 549, 680, 546.5, 683.5, 421, 629.5, 421, 631.5, 512.5, 447.5, 512.5, 446.5, 481.5, 423.5, 482, 426, 389.5)
 
 [node name="Oscar" parent="." instance=ExtResource("1_u4tfm")]
 position = Vector2(226, 361)

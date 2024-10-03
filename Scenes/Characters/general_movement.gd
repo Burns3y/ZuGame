@@ -31,8 +31,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed(JUMP) and is_on_floor():
 		velocity.y = new_jump_velocity
 	#If in water, doesn't need to be on floor
-	elif Input.is_action_pressed(JUMP) and JUMP_VELOCITY / 5 == new_jump_velocity:
-		velocity.y = new_jump_velocity
+	elif Input.is_action_pressed(JUMP) and JUMP_VELOCITY / 20 == new_jump_velocity and velocity.y >= -150:
+		velocity.y += new_jump_velocity
+		
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -51,8 +52,13 @@ func _physics_process(delta):
 		#Flips image based on direction
 		if direction == -1:
 			$Image.flip_h = true
+			if self.name == "Zu":
+				$Image.offset.x = 17
+			elif self.name == "Oscar":
+				$Image.offset.x = 27
 		elif direction == 1:
 			$Image.flip_h = false
+			$Image.offset.x = 0
 	#If standing still
 	else:
 		#Stops movement and animation
@@ -71,11 +77,13 @@ func swimming_physics(body, is_in_water):
 		#Slower gravity
 		gravity = ProjectSettings.get_setting("physics/2d/default_gravity") / 5
 		#Less jump
-		new_jump_velocity = JUMP_VELOCITY / 5
-		velocity.y += 500
+		new_jump_velocity = JUMP_VELOCITY / 20
+		if Input.is_action_pressed(JUMP):
+			velocity.y += 1200
 		
 	elif not is_in_water and str(self.name) == str(body):
 		#Resets jump and gravity
 		gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 		new_jump_velocity = JUMP_VELOCITY
-	
+		#velocity.y -= 25
+
