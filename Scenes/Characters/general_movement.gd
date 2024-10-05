@@ -2,12 +2,14 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -1000.0
+const JUMP_VELOCITY = -750.0
 var new_jump_velocity = JUMP_VELOCITY
 
 var JUMP
 var LEFT
 var RIGHT
+
+var is_in_water
 
 func _ready():
 	#Setting up the basic movement jeys
@@ -79,11 +81,10 @@ func swimming_physics(body, is_in_water):
 		#Less jump
 		new_jump_velocity = JUMP_VELOCITY / 20
 		if Input.is_action_pressed(JUMP):
-			velocity.y += 1200
+			velocity.y += 100
 		
 	elif not is_in_water and str(self.name) == str(body):
 		#Resets jump and gravity
 		gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 		new_jump_velocity = JUMP_VELOCITY
-		#velocity.y -= 25
 

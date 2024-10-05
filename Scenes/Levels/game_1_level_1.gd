@@ -11,19 +11,28 @@ func _ready():
 func _process(delta):
 	pass
 
-
+#If in water
 func _on_water_body_entered(body):
+	#Water physics (general_movement script)
 	if body.name == "Oscar":
 		$Oscar.swimming_physics(body.name, true)
-		$Oscar.velocity.y = 0
 	elif body.name == "Zu":
 		$Zu.swimming_physics(body.name, true)
-		$Zu.velocity.y /= 4
 
 
-
+#Exits water
 func _on_water_body_exited(body):
+	#Resets physics (general movement script)
 	if body.name == "Oscar":
 		$Oscar.swimming_physics(body.name, false)
 	elif body.name == "Zu":
 		$Zu.swimming_physics(body.name, false)
+
+
+func _on_acid_body_entered(body):
+	player_dies(body)
+	print(str(body), "died")
+
+
+func player_dies(player):
+	player.visible = false
