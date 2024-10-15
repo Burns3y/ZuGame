@@ -7,15 +7,15 @@ closed = false
 polygon = PackedVector2Array(41.0968, 3.73607, 30, 29, -30, 29, -41.0968, 1.86803)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_47ui1"]
-radius = 5.27632
-height = 25.0625
+radius = 5.0
+height = 25.0
 
 [node name="exit_area_oscar" type="Area2D"]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, 4)
 color = Color(0, 0.72549, 0.819608, 1)
-energy = 2.0
+energy = 4.0
 shadow_enabled = true
 texture = ExtResource("1_jqnpp")
 texture_scale = 0.1
@@ -27,5 +27,5 @@ occluder = SubResource("OccluderPolygon2D_3uwav")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-scale = Vector2(1.51621, 1.51621)
+scale = Vector2(1.51621, 1.23621)
 shape = SubResource("CapsuleShape2D_47ui1")

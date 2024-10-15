@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chsoppolkq007"
-path="res://.godot/imported/Zu Running fixed_-1.png (2).png-00ec5fd023b63b99a491771d6072507a.ctex"
+uid="uid://dmkdbn6q5ntdm"
+path="res://.godot/imported/Menu door.png-290b407d10838620228544a033a739b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Zu Running fixed_-1.png (2).png"
-dest_files=["res://.godot/imported/Zu Running fixed_-1.png (2).png-00ec5fd023b63b99a491771d6072507a.ctex"]
+source_file="res://Assets/Features/Menu door.png"
+dest_files=["res://.godot/imported/Menu door.png-290b407d10838620228544a033a739b1.ctex"]
 
 [params]
 

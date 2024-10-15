@@ -9,8 +9,6 @@ var JUMP
 var LEFT
 var RIGHT
 
-var is_in_water
-
 func _ready():
 	#Setting up the basic movement jeys
 	if self.name == "Zu":
@@ -65,9 +63,11 @@ func _physics_process(delta):
 	else:
 		#Stops movement and animation
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		$AnimationPlayer.stop()
-		#Goes to idle frame
-		$Image.frame_coords = Vector2(0, 2)
+		if $AnimationPlayer.current_animation == "running":
+			$AnimationPlayer.stop()
+		elif not $AnimationPlayer.is_playing():
+			#Sets to idle frame
+			$Image.frame_coords = Vector2(0, 2)
 
 
 	move_and_slide()
