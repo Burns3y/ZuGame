@@ -4,22 +4,21 @@ var oscar_is_in_water: bool = false
 var zu_is_in_water: bool = true
 var players_exiting = 0
 
+var zoom = Vector2(0.7, 0.7)
 var target_zoom = Vector2(1.5, 1.5)
-var zoom_speed = 2
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Door/AnimationPlayer.play("doors_opening")
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#Camera zoom
-	if $Camera2D.zoom != target_zoom:
-		$Camera2D.zoom = $Camera2D.lerp(target_zoom, zoom_speed * delta)
-	
+	#Zooms camera into scene at start
+	if $Camera2D.zoom != target_zoom and $Door.frame_coords.x == 6:
+		zoom_camera(delta)
+		
 	#If both players are in their exit spots
 	if players_exiting == 2:
-		print("Play")
 		disappear_players(true, true)
 		players_exiting = 100
 
@@ -75,3 +74,8 @@ func _on_exit_area_oscar_body_entered(body):
 func _on_exit_area_oscar_body_exited(body):
 	if body.name == "Oscar":
 		players_exiting -= 1
+
+
+func zoom_camera(delta):
+	zoom = zoom.slerp(target_zoom, 3 * delta)
+	$Camera2D.zoom = zoom
